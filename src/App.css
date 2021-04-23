@@ -1,4 +1,4 @@
-.hederi{
+.heder{
   margin: 4px 0 10px 0;
   overflow: hidden;
 }
@@ -34,9 +34,4 @@
   text-decoration: none;
   display: block;
   padding: 20px;
-}
-
-.Lbar,.Postebi,.Rbar{
-  box-shadow: 0 0 14px 0 rgb(252, 238, 238);
-  margin: 0 4px 0 2px;
 }
