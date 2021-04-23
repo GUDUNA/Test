@@ -1,0 +1,42 @@
+.hederi{
+  margin: 4px 0 10px 0;
+  overflow: hidden;
+}
+.logo{
+  background-color: #9d9ff3;
+  border-radius: 10px;
+}
+
+.logo >img {
+  width: 25%;
+  height: 25%;
+  display: block;
+}
+
+.meniu > ul {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: fit-content;
+}
+
+.meniu > ul > li{
+  display: inline-block;
+  list-style-type: none;
+}
+
+.meniu > ul > li:hover{
+  background-color: lightblue;
+  border-radius: 10px;
+}
+
+.meniu a{
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+}
+
+.Lbar,.Postebi,.Rbar{
+  box-shadow: 0 0 14px 0 rgb(252, 238, 238);
+  margin: 0 4px 0 2px;
+}
