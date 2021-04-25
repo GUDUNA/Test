@@ -35,3 +35,7 @@
   display: block;
   padding: 20px;
 }
+
+.row {
+  --bs-gutter-y : 15px;
+}

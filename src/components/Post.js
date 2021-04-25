@@ -4,29 +4,79 @@ import React from "react"
 class Post extends React.Component{
     constructor (props){
         super(props);
-        this.state = ({
-
-        });
-
-
+        this.state = {
+            edit : false,
+            body: "", //this.props.body,
+            title: "" // this.props.title
+        };
+        this.handleClick = this.handleClick.bind(this);
+        this.getTitle = this.getTitle.bind(this);
+        this.getBody = this.getBody.bind(this);
     }
+
+    componentDidMount() {
+        this.setState({
+            body: this.props.body,
+            title: this.props.title
+        })
+    }
+
+    handleClick (e){
+        e.preventDefault();
+        this.setState(state => ({
+            edit: !state.edit
+        }));
+    }
+
+    getTitle(e){
+        this.setState({
+            title: e.target.value
+        })
+    }
+
+    getBody(e){
+        this.setState({
+            body: e.target.value
+        })
+    }
+
+
 
     render(){
        return (
-           <div className="col-lg-4 col-md-6 mb-4" key={this.props.id} id={this.props.id}>
-               <div className="card">
-                   <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                       <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" className="img-fluid" alt={"hello"}/>
-                   </div>
-                   <div className="card-body">
-                       <h5 className="card-title">{this.props.title}</h5>
-                       <p className="card-text">
-                           {this.props.body}
-                       </p>
-                       <a href="#" className="btn btn-primary">Edit</a>
-                   </div>
-               </div>
-           </div>
+        <div className="col-lg-6 col-md-8 mb-6" key={this.props.id} id={this.props.id}>
+            <div className="card">
+                <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" className="img-fluid"
+                         alt={"hello"}/>
+                </div>
+                <div className="card-body">
+                    <h5 className="card-title">
+                        {!this.state.edit
+                            ? this.state.title
+                            : <textarea  onChange={(e)=>this.getTitle(e)}
+                                         className="form-control"
+                                         id="titleText"
+                                         rows="3" value={this.state.title}>
+                              </textarea>
+                        }
+                    </h5>
+                    <p className="card-text">
+                       {!this.state.edit
+                           ? this.state.body
+                           : <textarea  onChange={(e)=>this.getBody(e)}
+                                        className="form-control"
+                                        id="bodyTexe"
+                                        rows="3" value={this.state.body}>
+                            </textarea>
+
+                       }
+                    </p>
+
+                    <button className="btn btn-primary" onClick={this.handleClick}>{this.state.edit ? "Save" : "Edit"}</button>
+                </div>
+            </div>
+        </div>
        )
     }
 

@@ -5,9 +5,9 @@ import Post from "./Post"
 class Posts extends React.Component{
     constructor(props){
         super(props);
-        this.state = ({
+        this.state = {
             items : []
-        });
+        };
     }
     componentDidMount() {
         fetch('https://jsonplaceholder.cypress.io/posts')
