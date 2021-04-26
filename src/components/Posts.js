@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header"
 import Post from "./Post"
+import Sidenav from "./Sidenav"
 
 class Posts extends React.Component{
     constructor(props){
@@ -22,15 +23,15 @@ class Posts extends React.Component{
     render(){
         const items = this.state.items;
         return(
-
-            <div className={"container"}>
-                <Header/>
-                <div className={'row'}>
-                        {items.map(item => (
-                            <Post key={item.id} id={item.id} body={item.body} title={item.title}/>
-                        ))}
+                <div className={"container"}>
+                    <Sidenav/>
+                    <Header/>
+                    <div className={'row'}>
+                            {items.map(item => (
+                                <Post key={item.id} id={item.id} body={item.body} title={item.title}/>
+                            ))}
+                    </div>
                 </div>
-            </div>
         )
     }
 }

@@ -44,37 +44,32 @@ class Post extends React.Component{
 
     render(){
        return (
-        <div className="col-lg-6 col-md-8 mb-6" key={this.props.id} id={this.props.id}>
+        <div className="col-lg-6 col-md-8 mb-5 " key={this.props.id} id={this.props.id}>
             <div className="card">
                 <div className="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                     <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" className="img-fluid"
                          alt={"hello"}/>
                 </div>
                 <div className="card-body">
-                    <h5 className="card-title">
                         {!this.state.edit
-                            ? this.state.title
+                            ? <h5 className="card-title">{this.state.title}</h5>
                             : <textarea  onChange={(e)=>this.getTitle(e)}
                                          className="form-control"
                                          id="titleText"
                                          rows="3" value={this.state.title}>
                               </textarea>
                         }
-                    </h5>
-                    <p className="card-text">
                        {!this.state.edit
-                           ? this.state.body
+                           ? <p className="card-text">{this.state.body}</p>
                            : <textarea  onChange={(e)=>this.getBody(e)}
-                                        className="form-control"
-                                        id="bodyTexe"
+                                        className="form-control mt-2"
+                                        id="bodyText"
                                         rows="3" value={this.state.body}>
                             </textarea>
 
                        }
-                    </p>
-
-                    <button className="btn btn-primary" onClick={this.handleClick}>{this.state.edit ? "Save" : "Edit"}</button>
                 </div>
+                <button className="btn btn-primary" onClick={this.handleClick}>{this.state.edit ? "Save" : "Edit"}</button>
             </div>
         </div>
        )
