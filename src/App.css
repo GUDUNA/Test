@@ -42,7 +42,7 @@
 }
 
 .card-body{
-  height: 215px;
+  height: auto;
 }
 
 .card-title{
@@ -100,8 +100,13 @@
 }
 
 .navMenuOpen{
-  width:235px;
+  width:205px;
 }
 
+.margin-left{
+  margin-left:205px;
+  margin-right: 0 !important;
+  transition: 5s;
+}
 
 

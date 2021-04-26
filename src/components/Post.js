@@ -1,15 +1,30 @@
 import React from "react"
 
+function Edititem(props){
+    return(
+        <div className={"mb-2 mt-2"}>
+            <textarea  className="form-control" onChange={props.onChange}
+                       id="titleText"
+                       rows="3" value={props.value}>
+            </textarea>
+            <button className={"btn btn-danger"} onClick={props.onClick}>Save {props.title}</button>
+        </div>
+    )
+}
+
 
 class Post extends React.Component{
     constructor (props){
         super(props);
         this.state = {
-            edit : false,
+            editTitle : false,
+            editBody: false,
             body: "", //this.props.body,
             title: "" // this.props.title
         };
-        this.handleClick = this.handleClick.bind(this);
+
+        this.handleTitleEdit = this.handleTitleEdit.bind(this);
+        this.handleBodyEdit = this.handleBodyEdit.bind(this);
         this.getTitle = this.getTitle.bind(this);
         this.getBody = this.getBody.bind(this);
     }
@@ -21,10 +36,14 @@ class Post extends React.Component{
         })
     }
 
-    handleClick (e){
-        e.preventDefault();
+    handleTitleEdit (){
         this.setState(state => ({
-            edit: !state.edit
+            editTitle: !state.editTitle,
+        }));
+    }
+    handleBodyEdit (){
+        this.setState(state => ({
+            editBody: !state.editBody,
         }));
     }
 
@@ -51,25 +70,24 @@ class Post extends React.Component{
                          alt={"hello"}/>
                 </div>
                 <div className="card-body">
-                        {!this.state.edit
-                            ? <h5 className="card-title">{this.state.title}</h5>
-                            : <textarea  onChange={(e)=>this.getTitle(e)}
-                                         className="form-control"
-                                         id="titleText"
-                                         rows="3" value={this.state.title}>
-                              </textarea>
+                        {!this.state.editTitle
+                            ? <h5 className="card-title" onDoubleClick={this.handleTitleEdit} >{this.state.title}</h5>
+                            : <Edititem onChange={(e)=>this.getTitle(e)}
+                                        value={this.state.title}
+                                        onClick={this.handleTitleEdit}
+                                        title={"Title"}
+                            />
                         }
-                       {!this.state.edit
-                           ? <p className="card-text">{this.state.body}</p>
-                           : <textarea  onChange={(e)=>this.getBody(e)}
-                                        className="form-control mt-2"
-                                        id="bodyText"
-                                        rows="3" value={this.state.body}>
-                            </textarea>
-
+                       {!this.state.editBody
+                           ? <p className="card-text" onDoubleClick={this.handleBodyEdit}>{this.state.body}</p>
+                           : <Edititem onChange={(e)=>this.getBody(e)}
+                                       value={this.state.body}
+                                       onClick={this.handleBodyEdit}
+                                       title={"Body"}
+                           />
                        }
+                    <a className="btn btn-primary" >Read more</a>
                 </div>
-                <button className="btn btn-primary" onClick={this.handleClick}>{this.state.edit ? "Save" : "Edit"}</button>
             </div>
         </div>
        )
